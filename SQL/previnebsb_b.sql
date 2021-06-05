@@ -16,14 +16,15 @@ bairro varchar(20) not null,
 logradouro varchar(20) not null,
 complemento varchar(30) default null,
 senha varchar(20) not null,
+registro timestamp not null,
 unique key(cpf),
 primary key(id_usuarios)
 );
 
 create table StatusColaborador(
-idCol int not null,
-StatusColaborador varchar(20) not null,
-primary key(idCol)
+id_statuscolaborador int not null,
+statusColaborador varchar(20) not null,
+primary key(id_statuscolaborador)
 );
 
 create table Colaborador(
@@ -32,18 +33,18 @@ matricula varchar(20) not null,
 funcao varchar(50)  default null,
 cargo varchar(20) not null,
 areaatuacao varchar(20) not null,
-StatusColaborador_idCol int not null,
+StatusColaborador_id_statuscolaborador int not null,
 unique key (matricula),
 primary key (usuarios_id_usuarios),
 foreign key (usuarios_id_usuarios) references Usuarios(id_usuarios),
-foreign key (StatusColaborador_idCol) references StatusColaborador(idCol)
+foreign key (StatusColaborador_id_statuscolaborador) references StatusColaborador(id_statuscolaborador)
 );
 
 
-create table StatusUsuarioSUS(
-idUsu int not null,
-StatusUsuario varchar(20) not null,
-primary key(idUsu)
+create table StatusPaciente(
+id_statuspaciente int not null,
+statusPaciente varchar(20) not null,
+primary key(id_statuspaciente)
 );
 
 create table Paciente(
@@ -55,9 +56,9 @@ dependentes varchar (3) not null,
 QuantDep int not null,
 DiaSemana varchar(7) not null,
 periodo varchar(5) not null,
-StatusUsuarioSUS_idUsu int not null,
+StatusPaciente_id_statuspaciente int not null,
 unique key(CartaoSUS),
 primary key(usuarios_id_usuarios),
 foreign key(usuarios_id_usuarios) references Usuarios(id_usuarios),
-foreign key(StatusUsuarioSUS_idUsu) references StatusUsuarioSUS(idUsu)
+foreign key(StatusPaciente_id_statuspaciente) references StatusPaciente(id_statuspaciente)
 );

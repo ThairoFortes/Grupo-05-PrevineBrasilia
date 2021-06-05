@@ -38,7 +38,7 @@
             ?>
         <hgroup/>
             <form method="post" action="login.php">
-            	<img class="mb-4" src="_imagens/1.jpeg" alt="" width="300" height="150">
+            	<img class="mb-4" src="imagens/1.jpeg" alt="" width="300" height="150">
     			   <h1 class="h3 mb-3 fw-normal">Login</h1>
 
                 <div class="form-floating mb-1">
@@ -60,8 +60,8 @@
 
                 <button class="w-100 btn btn-lg btn-primary" type="submit" value="Entrar">Entrar</button>
 
-                <a href="cadusuariosus.php">Preciso Registrar como Paciente</a></br>
-                <a href="cadagentegestor.php">Preciso Registrar como Colaborador</a></br>
+                <a href="paciente-cadastrar.php">Preciso Registrar como Paciente</a></br>
+                <a href="colaborador-cadastrar.php">Preciso Registrar como Colaborador</a></br>
                 <a href="redefinirsenha.php">Esqueci a Senha</a>
                 <p class="mt-5 mb-3 text-muted">&copy; Desenvolvido por Keilly Francielly, Matheus Corrêa e Thairo Fortes :: Todos os Direitos Reservados.</p>
             </form>
