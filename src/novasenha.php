@@ -28,7 +28,7 @@
     
     <main class="form-signin">
       <form>
-        <img class="mb-4" src="_imagens/1.jpeg" alt="" width="300" height="150">
+        <img class="mb-4" src="imagens/1.jpeg" alt="" width="300" height="150">
         <h1 class="h3 mb-3 fw-normal">Alterar Senha</h1>
 
         <div class="form-floating mb-1">

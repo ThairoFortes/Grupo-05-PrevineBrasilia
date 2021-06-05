@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    include_once ("conexao.php");
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -96,12 +96,11 @@
     };
     </script>
 </head>
-
 <body class="bg-light container">
     <div>
         <header>
             <figure>
-                <img src="_imagens/1.jpeg" alt="" width="300" height="150">
+                <img src="imagens/1.jpeg" alt="" width="300" height="150">
             </figure>
         <hgroup>
             <?php
@@ -114,61 +113,60 @@
         <h2 class="pb-2 border-bottom">Dados do Paciente</h2>
     </div>
         </hgroup>
-        </header>
-        
+        <header/>
     <div class="container">
     <main>
        <div class="col-md-7 col-lg-8">
-        <form class="needs-validation" novalidate method="post" action="cadusuario.php">
+        <form method="POST" action="">
             <div class="row g-3">
 
                 <div class="col-sm-6">
-                  <label for="cpfpac" class="form-label">CPF*</label>
-                  <input type="text" class="form-control" name="cpfpac" id="cpfpac" required  placeholder="000.000.000-00" value="" required>
+                  <label for="floatingInput" class="form-label">CPF</label>
+                  <input type="number" class="form-control" disabled="" name="cpf" id="cpf" id="floatingInput" placeholder="000.000.000-00" value="">
                   <div class="invalid-feedback">Digite um CPF válido</div>
                 </div>
 
                 <div class="col-sm-6">
                   <label for="cartaosuspac" class="form-label">Cartão SUS*</label>
-                  <input type="number" name="cartaosuspac" class="form-control" id="cartaosuspac" placeholder="000 0000 0000 0000" value="cartaosuspac" required>
+                  <input type="number" name="cartaosuspac" disabled="" class="form-control" id="cartaosuspac" placeholder="000 0000 0000 0000" value="" required>
                   <div class="invalid-feedback">Digite um número válido</div>
                 </div>
 
                 <div class="col-12">
                   <label for="nomepac" class="form-label">Nome Completo*</label>
                   <div class="input-group has-validation">
-                    <input type="text" class="form-control" name="nomepac" id="nomepac" placeholder="" required>
+                    <input type="text" class="form-control" disabled="" name="nomepac" id="nomepac" placeholder="" required>
                   <div class="invalid-feedback">Digite um nome válido</div>
                   </div>
                 </div>
 
                 <div class="col-sm-6">
                   <label for="emailpac" class="form-label">E-mail*</label>
-                  <input type="email" name="emailpac" class="form-control" id="emailpac" placeholder="voce@exemplo.com" value="" required>
+                  <input type="email" name="emailpac" disabled="" class="form-control" id="emailpac" placeholder="voce@exemplo.com" value="" required>
                   <div class="invalid-feedback">Digite um e-mail válido</div>
                 </div>
 
                 <div class="col-sm-6">
                   <label for="dtnascpac" class="form-label">Data de Nascimento*</label>
-                  <input type="date" name="dtnascpac" class="form-control" id="dtnascpac" placeholder="" value="dtnascpac" required>
+                  <input type="date" disabled="" name="dtnascpac" class="form-control" id="dtnascpac" placeholder="" value="dtnascpac" disabled="" required>
                   <div class="invalid-feedback">Digite uma data válida</div>
                 </div>
                 
                 <div class="col-sm-6">
                   <label for="telefonepac" class="form-label">Telefone (Opcional)</label>
-                  <input type="number" name="telefonepac" class="form-control" id="telefonepac" placeholder="(DDD) 0000-0000" value="telefonepac">
+                  <input type="number" disabled="" name="telefonepac" class="form-control" id="telefonepac" placeholder="(DDD) 0000-0000" value="telefonepac">
                   <div class="invalid-feedback">Digite um número válido</div>
                 </div>
 
                 <div class="col-sm-6">
                   <label for="celularpac" class="form-label">Celular*</label>
-                  <input type="number" name="celularpac" class="form-control" id="celularpac" placeholder="(DDD) 00000-0000" value="celularpac" required>
+                  <input type="number" disabled="" name="celularpac" class="form-control" id="celularpac" placeholder="(DDD) 00000-0000" value="celularpac" required>
                   <div class="invalid-feedback">Digite um número válido</div>
                 </div>
 
                 <div class="col-sm-6">
                   <label class="form-label">Gênero*</label>
-                    <select class="form-select" name="generopac" aria-label="Default select example" required>
+                    <select class="form-select" disabled="" name="generopac" aria-label="Default select example" required>
                       <option selected>Selecione</option>
                       <option value="Masculino">Masculino</option>
                       <option value="Feminino">Feminino</option>
@@ -178,7 +176,7 @@
 
                 <div class="col-sm-6">
                   <label class="form-label">Cor*</label>
-                    <select class="form-select" name="cor" aria-label="Default select example" required>
+                    <select class="form-select" disabled="" name="cor" aria-label="Default select example" required>
                       <option selected>Selecione</option>
                       <option value="Amarelo">Amarelo</option>
                       <option value="Branco">Branco</option>
@@ -191,43 +189,43 @@
 
                 <div class="col-sm-3">
                   <label for="ceppac" class="form-label">CEP*</label>
-                  <input type="text" name="ceppac" class="form-control" size="10" maxlength="9" id="ceppac" placeholder="00.000-000" value="" required onblur="pesquisacep(this.value);">
+                  <input type="text" disabled="" name="ceppac" class="form-control" size="10" maxlength="9" id="ceppac" placeholder="00.000-000" value="" required onblur="pesquisacep(this.value);">
                   <div class="invalid-feedback">Digite um CEP válido</div>
                 </div>
 
                 <div class="col-sm-3">
                   <label for="cidadepac" class="form-label">Cidade*</label>
-                  <input type="text" name="cidadepac" class="form-control" size="60" id="cidadepac" placeholder="" value="" required>
+                  <input type="text" disabled="" name="cidadepac" class="form-control" size="60" id="cidadepac" placeholder="" value="" required>
                   <div class="invalid-feedback">Digite uma informação válida</div>
                 </div>
 
                 <div class="col-sm-3">
                   <label for="bairropac" class="form-label">Bairro*</label>
-                  <input type="text" name="bairropac" class="form-control" size="40" id="bairropac" placeholder="" value="" required>
+                  <input type="text" disabled="" name="bairropac" class="form-control" size="40" id="bairropac" placeholder="" value="" required>
                   <div class="invalid-feedback">Digite uma informação válida</div>
                 </div>
 
                 <div class="col-sm-3">
                   <label for="ufpac" class="form-label">Estado*</label>
-                  <input type="text" name="ufpac" class="form-control" size="2" id="ufpac" placeholder="" value="" required>
+                  <input type="text" disabled="" name="ufpac" class="form-control" size="2" id="ufpac" placeholder="" value="" required>
                   <div class="invalid-feedback">Digite uma informação válida</div>
                 </div>
 
                 <div class="col-12">
                   <label for="enderecopac" class="form-label">Endereço*</label>
-                  <input type="text" name="enderecopac" class="form-control" size="40" id="enderecopac" placeholder="" value="" required>
+                  <input type="text" disabled="" name="enderecopac" class="form-control" size="40" id="enderecopac" placeholder="" value="" required>
                   <div class="invalid-feedback">Digite uma informação válida</div>
                 </div>
 
                 <div class="col-12">
                   <label for="complementopac" class="form-label">Complemento (Opcional)</label>
-                  <input type="text" name="complementopac" class="form-control" size="40" id="complementopac" placeholder="" value="">
+                  <input type="text" disabled="" name="complementopac" class="form-control" size="40" id="complementopac" placeholder="" value="">
                   <div class="invalid-feedback">Digite uma informação válida</div>
                 </div>
 
                 <div class="col-sm-3">
                   <label class="form-label">Dependentes*</label>
-                    <select class="form-select" name="possuideppac" aria-label="Default select example" required>
+                    <select class="form-select" disabled="" name="possuideppac" aria-label="Default select example" required>
                       <option selected>Selecione</option>
                       <option value="s">Sim</option>
                       <option value="n">Não</option>
@@ -237,13 +235,13 @@
 
                 <div class="col-sm-2">
                   <label for="quntdep" class="form-label">Quantidade</label>
-                    <input type="text" name="quntdep" class="form-control" id="quntdep" placeholder="" value="">
+                    <input type="text" disabled="" name="quntdep" class="form-control" id="quntdep" placeholder="" value="">
                   <div class="invalid-feedback">Selecione uma opção válida</div>
                 </div>
 
                  <div class="col-sm-4">
                   <label class="form-label">Agendamento*</label>
-                    <select class="form-select" name="diadasemana" aria-label="Default select example" required>
+                    <select class="form-select" disabled="" name="diadasemana" aria-label="Default select example" required>
                       <option selected>Dia da Semana</option>
                       <option value="Segunda">Segunda-Feira</option>
                       <option value="Terça">Terça-Feira</option>
@@ -258,7 +256,7 @@
 
                 <div class="col-sm-3">
                   <label class="form-label">Período*</label>
-                    <select class="form-select" name="periodo" aria-label="Default select example" required>
+                    <select class="form-select" disabled="" name="periodo" aria-label="Default select example" required>
                       <option selected>Período</option>
                       <option value="Manha">Manhã</option>
                       <option value="Tarde">Tarde</option>
@@ -268,17 +266,14 @@
                 </div>
 
                <div class="col-12">
-                  <label for="senhapac1" class="form-label">Senha*</label>
-                    <input type="password" name="senhapac1" class="form-control" id="senhapac1" placeholder="***********" value="">
+                  <label for="status" class="form-label">Status*</label>
+                    <input type="text" disabled="" name="status" class="form-control" id="status" placeholder="Ex: Concluído" value="">
                 </div>
                
-                <div class="col-12">
-                    </br><input type="submit" class="btn btn-primary"  value="Salvar"/>
-                </div>
             </div>
         </form>
-        <a href="index.php">Voltar para Login</a></br>
-        <a href="menu.php">Voltar para Menu</a>
+        <div class="my-4">        
+          <a class="my-4" href="index.php">Sair com Segurança</a></div>
         </div>
     </main>
     </div>
