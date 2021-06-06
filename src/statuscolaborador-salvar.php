@@ -1,18 +1,27 @@
 <?php
-session_start();
-include_once ("config.php");
 
-$codstatcol = filter_input(INPUT_POST, 'codstatcol', FILTER_SANITIZE_NUMBER_INT);
-$statcol = filter_input(INPUT_POST, 'statcol', FILTER_SANITIZE_SPECIAL_CHARS);
+switch ($_REQUEST["acao"]) {
+	case 'cadastrar':
+	$codigo 		= $_POST["codigostatus_colaborador"];
+	$status 		= $_POST["status_colaborador"];
 
-$result_statuscolaborador = "INSERT INTO StatusColaborador (id_colaborador, statusColaborador)
-VALUES ('$codstatcol','$statcol')";
-$res = $conn -> query($result_statuscolaborador);
-if($res == true){
-    $_SESSION["msg"] = "<h1 style='color: green;'>Status Cadastrado com Sucesso!</h1>";
-    header("Location: statuscolaborador-cadastrar.php");
-}else{
-    $_SESSION["msg"] = "<h1 style='color: red;'>Status Não foi Cadastrado!</h1>";
-    header("Location: statuscolaborador-cadastrar.php");
+	$sql_statuscolaborador = "INSERT INTO StatusColaborador ( 
+	id_statuscolaborador, 
+	statusColaborador)
+	VALUES (
+	'{$codigo}',
+	'{$status}')";
+
+	$res_statuscolaborador = $conn -> query($sql_statuscolaborador) or die($conn->error);
+	
+	/*var_dump($res_statuscolaborador);
+	die();*/
+
+	if($res_statuscolaborador==true){
+		print "<div class='alert alert-success mt-5'><p>Cadastrou com sucesso!</p></div>";
+	}else{
+		print "<div class='alert alert-danger mt-5'><p>Não foi possível cadastrar!</p></div>";
+	}
+	break;
 }
 ?>

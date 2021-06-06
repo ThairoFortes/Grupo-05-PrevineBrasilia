@@ -90,10 +90,8 @@ switch ($_REQUEST["acao"]) {
 	}
 	break;
 
-
-
 	case 'editar':
-	/*$id_usuarios    = $_POST["id_usuarios"];*/
+	$id_usuarios    = $_POST["id_usuarios"];
 	$cpf 			= $_POST["cpf_paciente"];
 	$cartao 		= $_POST["cartao_paciente"];
 	$nome     		= $_POST["nome_paciente"];
@@ -129,16 +127,5 @@ switch ($_REQUEST["acao"]) {
 	}
 	break;
 
-	case 'excluir':
-	$sql = "DELETE FROM biblioteca
-	WHERE id_biblioteca = ".$_REQUEST["id_biblioteca"];
-	$res = $conn->query($sql) or die($conn->error);
-
-	if($res==true){
-		print "<div class='alert alert-success mt-5'><p>Excluiu com sucesso!</p></div>";
-	}else{
-		print "<div class='alert alert-danger mt-5'><p>Não foi possível excluir!</p></div>";
-	}
-	break;
 }
 ?>

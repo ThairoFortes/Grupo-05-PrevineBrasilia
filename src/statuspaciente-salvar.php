@@ -1,18 +1,27 @@
 <?php
-    session_start();
-    include_once ("config.php");
 
-$codusu = filter_input(INPUT_POST, 'codusu', FILTER_SANITIZE_NUMBER_INT);
-$statusu = filter_input(INPUT_POST, 'statusu', FILTER_SANITIZE_SPECIAL_CHARS);
+switch ($_REQUEST["acao"]) {
+	case 'cadastrar':
+	$codigo 		= $_POST["codigostatus_paciente"];
+	$status 		= $_POST["status_paciente"];
 
-$result_statususuariosus = "INSERT INTO StatusPaciente (id_statuspaciente, statusPaciente)
-VALUES ('$codusu','$statusu')";
-$res = $conn -> query($result_statususuariosus);
-if($res == true){
-    $_SESSION["msg"] = "<h1 style='color: green;'>Status Cadastrado com Sucesso!</h1>";
-    header("Location: statuspaciente-cadastrar.php");
-}else{
-    $_SESSION["msg"] = "<h1 style='color: red;'>Status Não foi Cadastrado!</h1>";
-    header("Location: statuspaciente-cadastrar.php");
+	$sql_statuspaciente = "INSERT INTO StatusPaciente ( 
+	id_statuspaciente, 
+	statusPaciente)
+	VALUES (
+	'{$codigo}',
+	'{$status}')";
+
+	$res_statuspaciente = $conn -> query($sql_statuspaciente) or die($conn->error);
+	
+	/*var_dump($res_statuspaciente);
+	die();*/
+
+	if($res_statuspaciente==true){
+		print "<div class='alert alert-success mt-5'><p>Cadastrou com sucesso!</p></div>";
+	}else{
+		print "<div class='alert alert-danger mt-5'><p>Não foi possível cadastrar!</p></div>";
+	}
+	break;
 }
 ?>

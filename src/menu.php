@@ -131,9 +131,6 @@
     </div> 
   </div>
 
-  
-
-</br><a href="index.php">Sair com Segurança</a>
 <footer>
   <p class="mt-5 mb-3 text-muted">&copy; Desenvolvido por Keilly Francielly, Matheus Corrêa e Thairo Fortes :: Todos os Direitos Reservados.</p>
 </footer>

@@ -1,7 +1,3 @@
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -82,10 +78,11 @@ session_start();
               $qtd = $res_usuarios->num_rows;
 
               if($qtd > 0){
-                print "<p>Encontrou <b>$qtd</b> resultados</p>";
+                print "<p>Resultados encontrados: <b>$qtd</b></p>";
 
                 print "<table class='table table-bordered table-striped table-hover'>";
                 print "<tr>";
+                print "<th>Id</th>";
                 print "<th>Cartão SUS</th>";
                 print "<th>Nome</th>";
                 print "<th>Data de Nascimento</th>";
@@ -96,6 +93,7 @@ session_start();
                 print "</tr>";
                 while($row = $res_usuarios->fetch_object()){
                   print "<tr>";
+                  print "<td>".$row->id_usuarios."</td>";
                   print "<td>".$row->CartaoSUS."</td>";
                   print "<td>".$row->nome."</td>";
                   print "<td>".$row->DataNascimento."</td>";
@@ -111,6 +109,13 @@ session_start();
               }else{
                 print "<p>Não encontrou resultados</p>";
               }
+
+              switch(@$_REQUEST["page"]){
+              //paciente
+              case "edit-paciente":
+                include("paciente-editar.php");
+              break;
+            }
             ?>
 
             <a href="index.php">Voltar para Login</a>

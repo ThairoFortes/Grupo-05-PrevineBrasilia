@@ -36,19 +36,32 @@ session_start();
         }
         ?>
     </hgroup>
-    <form method="post" action="statuspaciente-salvar.php">
+    <form method="post" action="?page=save-statuspaciente">
+      <input type="hidden" name="acao" value="cadastrar">
         <img class="mb-4" src="imagens/1.jpeg" alt="" width="300" height="150">
         <h1 class="h3 mb-3 fw-normal">Status do Paciente</h1>
 
         <div class="form-floating mb-1">
-          <input type="number" name="codusu" class= "form-control" id="floatingInput" placeholder="">
+          <input type="number" name="codigostatus_paciente" class= "form-control" id="floatingInput" placeholder="">
           <label for="floatingInput">Código</label>
         </div>
 
         <div class="form-floating mb-1">
-          <input type="text" name="statusu" class="form-control" id="floatingPassword" placeholder="">
+          <input type="text" name="status_paciente" class="form-control" id="floatingPassword" placeholder="">
           <label for="floatingPassword">Status</label>
         </div>
+
+        <?php
+        include("config.php");
+
+        switch(@$_REQUEST["page"]){
+              //colaborador
+          case "save-statuspaciente":
+          include("statuspaciente-salvar.php");
+          break;
+        }
+        ?>
+
 
         <button class="w-100 btn btn-lg btn-primary" type="submit" value="Entrar">Salvar</button>
         <a href="menu.php">Voltar para Menu</a>

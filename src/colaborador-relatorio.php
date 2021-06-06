@@ -82,7 +82,7 @@ session_start();
               $qtd = $res_usuarios->num_rows;
 
               if($qtd > 0){
-                print "<p>Encontrou <b>$qtd</b> resultados</p>";
+                print "<p>Resultados encontrados: <b>$qtd</b></p>";
                 print "<table class='table table-bordered table-striped table-hover'>";
                 print "<tr>";
                 print "<th>Matrícula</th>";
@@ -102,7 +102,7 @@ session_start();
                   print "<td>".$row->cargo."</td>";
                   print "<td>".$row->areaatuacao."</td>";
                   print "<td>".$row->statusColaborador."</td>";
-                  print "<td></td>";
+                  print "<td>".$row->registro."</td>";
                   print "<td>
                   <button onclick=\"location.href='?page=edit-colaborador&id_usuarios=".$row->id_usuarios."';\" class='btn btn-primary'>Editar</button>                
                   </td>";
