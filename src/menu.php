@@ -87,9 +87,9 @@
           <svg class="bi" width="2em" height="2em"><use xlink:href="#cadeado"/></svg>
         </div>
         <div>
-          <h3>Alterar Senha</h3>
-          <p>Evite senhas fáceis e evite armazenar elas em arquivos de dispositivos que se conectem com a internet.</p><p></p>
-          <a href="novasenha.php" class="btn btn-primary">Alterar</a>
+          <h3>Cadastrar Colaborador</h3>
+          <p>Efetue o cadastro de um novo colaborador.</p><p></p>
+          <a href="colaborador-cadastrar.php" class="btn btn-primary">Cadastrar</a>
         </div>
       </div>
 

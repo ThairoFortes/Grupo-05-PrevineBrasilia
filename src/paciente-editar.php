@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8"/>   
+  <meta charset="UTF-8"/>
   <meta http-equiv="Content-Type" content="text/html"/>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/form-validation.css" rel="stylesheet">
@@ -113,8 +113,7 @@
            <div class="col-md-7 col-lg-8">
            
             <?php
-            include("config.php");
-
+            include ("config.php");
             $sql_usuarios = "SELECT u.*,p.*,s.*
             FROM usuarios u JOIN paciente p
             ON u.id_usuarios = p.usuarios_id_usuarios
@@ -126,13 +125,6 @@
 
             $row = $res_usuarios->fetch_object();
 
-
-            /*var_dump($sql_usuarios);
-              var_dump($res_usuarios);
-              die();*/
-
-
-            /*$sql_paciente = "SELECT * FROM biblioteca WHERE id_biblioteca = ".$_REQUEST["id_biblioteca"];*/
             ?>
 
             <form class="needs-validation" novalidate method="post" action="?page=save-paciente">
@@ -142,52 +134,52 @@
 
                 <div class="col-sm-6">
                   <label class="form-label">CPF*</label>
-                  <input type="text" class="form-control" name="cpf_paciente" placeholder="000.000.000-00" disabled="">
+                  <input type="text" class="form-control" placeholder="000.000.000-00" value="<?php echo $row->cpf; ?>" disabled="">
                   <div class="invalid-feedback">Digite um CPF válido</div>
                 </div>
 
                 <div class="col-sm-6">
                   <label class="form-label">Cartão SUS*</label>
-                  <input type="number"  class="form-control" name="cartao_paciente" placeholder="000 0000 0000 0000" disabled="">
+                  <input type="number"  class="form-control" placeholder="000 0000 0000 0000" value="<?php echo $row->CartaoSUS; ?>" disabled="">
                   <div class="invalid-feedback">Digite um número válido</div>
                 </div>
 
                 <div class="col-12">
                   <label class="form-label">Nome Completo*</label>
                   <div class="input-group has-validation">
-                    <input type="text" class="form-control" name="nome_paciente" placeholder="" required>
+                    <input type="text" class="form-control" name="nome" value="<?php echo $row->nome; ?>" placeholder="" required>
                     <div class="invalid-feedback">Digite um nome válido</div>
                   </div>
                 </div>
 
                 <div class="col-sm-6">
                   <label class="form-label">E-mail*</label>
-                  <input type="email" class="form-control" name="email_paciente" placeholder="voce@exemplo.com" required>
+                  <input type="email" class="form-control" name="email" placeholder="voce@exemplo.com" value="<?php echo $row->email; ?>" required>
                   <div class="invalid-feedback">Digite um e-mail válido</div>
                 </div>
 
                 <div class="col-sm-6">
                   <label class="form-label">Data de Nascimento*</label>
-                  <input type="date" class="form-control" name="dtnascimento_paciente" placeholder="">
+                  <input type="date" class="form-control" name="DataNascimento" value="<?php echo $row->DataNascimento; ?>" placeholder="">
                   <div class="invalid-feedback">Digite uma data válida</div>
                 </div>
                 
                 <div class="col-sm-6">
                   <label class="form-label">Telefone (Opcional)</label>
-                  <input type="number" class="form-control" name="telefone_paciente" placeholder="(DDD) 0000-0000">
+                  <input type="number" class="form-control" name="telefone" value="<?php echo $row->telefone; ?>" placeholder="(DDD) 0000-0000">
                   <div class="invalid-feedback">Digite um número válido</div>
                 </div>
 
                 <div class="col-sm-6">
                   <label class="form-label">Celular*</label>
-                  <input type="number" class="form-control" name="celular_paciente" placeholder="(DDD) 00000-0000" required>
+                  <input type="number" class="form-control" name="celular" value="<?php echo $row->celular; ?>" placeholder="(DDD) 00000-0000" required>
                   <div class="invalid-feedback">Digite um número válido</div>
                 </div>
 
                 <div class="col-sm-6">
                   <label class="form-label">Gênero*</label>
-                  <select class="form-select" name="genero_paciente" aria-label="Default select example" required>
-                    <option selected>Selecione</option>
+                  <select class="form-select" name="genero" aria-label="Default select example" required>
+                    <option selected><?php echo $row->genero;?></option>
                     <option value="Masculino">Masculino</option>
                     <option value="Feminino">Feminino</option>
                   </select>
@@ -196,8 +188,8 @@
 
                 <div class="col-sm-6">
                   <label class="form-label">Cor*</label>
-                  <select class="form-select" name="cor_paciente" aria-label="Default select example" required>
-                    <option selected>Selecione</option>
+                  <select class="form-select" name="cor" aria-label="Default select example" required>
+                    <option selected><?php echo $row->cor;?></option>
                     <option value="Amarelo">Amarelo</option>
                     <option value="Branco">Branco</option>
                     <option value="Indigena">Indígena</option>
@@ -209,60 +201,60 @@
 
                 <div class="col-sm-3">
                   <label class="form-label">CEP*</label>
-                  <input type="text"class="form-control" name="cep_paciente" size="10" maxlength="9" id="cep_paciente" placeholder="00.000-000" required onblur="pesquisacep(this.value);">
+                  <input type="text"class="form-control" name="cep" size="10" maxlength="9" id="cep_paciente" placeholder="00.000-000" value="<?php echo $row->cep; ?>"  required onblur="pesquisacep(this.value);">
                   <div class="invalid-feedback">Digite um CEP válido</div>
                 </div>
 
                 <div class="col-sm-3">
                   <label class="form-label">Cidade*</label>
-                  <input type="text" class="form-control" name="cidade_paciente" size="60" id="cidade_paciente" placeholder="" required>
+                  <input type="text" class="form-control" name="cidade" size="60" id="cidade_paciente" placeholder="" value="<?php echo $row->cidade; ?>" required>
                   <div class="invalid-feedback">Digite uma informação válida</div>
                 </div>
 
                 <div class="col-sm-3">
                   <label class="form-label">Bairro*</label>
-                  <input type="text" class="form-control" name="bairro_paciente" size="40" id="bairro_paciente" placeholder="" required>
+                  <input type="text" class="form-control" name="bairro" size="40" id="bairro_paciente" placeholder="" value="<?php echo $row->bairro; ?>" required>
                   <div class="invalid-feedback">Digite uma informação válida</div>
                 </div>
 
                 <div class="col-sm-3">
                   <label class="form-label">Estado*</label>
-                  <input type="text" class="form-control" name="uf_paciente" size="2" id="uf_paciente" placeholder="" required>
+                  <input type="text" class="form-control" name="estado" size="2" id="uf_paciente" placeholder="" value="<?php echo $row->estado; ?>" required>
                   <div class="invalid-feedback">Digite uma informação válida</div>
                 </div>
 
                 <div class="col-12">
                   <label class="form-label">Endereço*</label>
-                  <input type="text" class="form-control" name="endereco_paciente" size="40" id="endereco_paciente" placeholder="" required>
+                  <input type="text" class="form-control" name="logradouro" size="40" id="endereco_paciente" placeholder="" value="<?php echo $row->logradouro; ?>" required>
                   <div class="invalid-feedback">Digite uma informação válida</div>
                 </div>
 
                 <div class="col-12">
                   <label class="form-label">Complemento (Opcional)</label>
-                  <input type="text" class="form-control" name="complemento_paciente" size="40" placeholder="">
+                  <input type="text" class="form-control" name="complemento" size="40" placeholder="" value="<?php echo $row->complemento; ?>">
                   <div class="invalid-feedback">Digite uma informação válida</div>
                 </div>
 
                 <div class="col-sm-3">
                   <label class="form-label">Dependentes*</label>
-                  <select class="form-select" name="dependentes_paciente" aria-label="Default select example" required>
-                    <option selected>Selecione</option>
-                    <option value="s">Sim</option>
-                    <option value="n">Não</option>
+                  <select class="form-select" name="dependentes" aria-label="Default select example" required>
+                    <option selected><?php echo $row->dependentes;?></option>
+                    <option value="Sim">Sim</option>
+                    <option value="Nao">Não</option>
                   </select>
                   <div class="invalid-feedback">Selecione uma opção válida</div>
                 </div>
 
                 <div class="col-sm-2">
                   <label class="form-label">Quantidade</label>
-                  <input type="text" class="form-control" name="qtddependentes_paciente" placeholder="">
+                  <input type="text" class="form-control" name="QuantDep" placeholder="" value="<?php echo $row->QuantDep; ?>">
                   <div class="invalid-feedback">Selecione uma opção válida</div>
                 </div>
 
                 <div class="col-sm-4">
                   <label class="form-label">Agendamento*</label>
-                  <select class="form-select" name="agendamento_paciente" aria-label="Default select example" required>
-                    <option selected>Dia da Semana</option>
+                  <select class="form-select" name="DiaSemana" aria-label="Default select example" required>
+                    <option selected><?php echo $row->DiaSemana;?></option>
                     <option value="Segunda">Segunda-Feira</option>
                     <option value="Terça">Terça-Feira</option>
                     <option value="Quarta">Quarta-Feira</option>
@@ -276,8 +268,8 @@
 
                 <div class="col-sm-3">
                   <label class="form-label">Período*</label>
-                  <select class="form-select" name="periodo_paciente" aria-label="Default select example" required>
-                    <option selected>Período</option>
+                  <select class="form-select" name="periodo" aria-label="Default select example" required>
+                    <option selected><?php echo $row->periodo;?></option>
                     <option value="Manha">Manhã</option>
                     <option value="Tarde">Tarde</option>
                     <option value="Noite">Noite</option>
@@ -285,18 +277,26 @@
                   <div class="invalid-feedback">Selecione uma opção válida</div>
                 </div>
 
-                <div class="col-12">
-                  <label class="form-label">Senha*</label>
-                  <input type="password" class="form-control" name="senha_paciente" disabled="" placeholder="">
+                <div class="col-sm-3">
+                  <label class="form-label">Status*</label>
+                  <select class="form-select" name="StatusPaciente_id_statuspaciente" aria-label="Default select example" required>
+                    <option selected><?php echo $row->StatusPaciente_id_statuspaciente;?></option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                  <div class="invalid-feedback">Selecione uma opção válida</div>
                 </div>
 
                 <div class="col-12">
-                  <input type="submit" class="btn btn-primary"  value="Salvar"/>
+                  <input type="submit" class="btn btn-primary"  value="Editar"/>
                 </div>
               </form>
               
               <div class="my-4">
-                <a href="index.php">Voltar para Login</a>
+                <a href="menu.php">Voltar para Menu</a>
               </div>
 
             </div>
@@ -306,8 +306,6 @@
       </div>
 
       <?php
-      include("config.php");
-
       switch(@$_REQUEST["page"]){
       //paciente
       case "cad-paciente":

@@ -2,14 +2,11 @@
 
 switch ($_REQUEST["acao"]) {
 	case 'cadastrar':
-	$codigo 		= $_POST["codigostatus_paciente"];
 	$status 		= $_POST["status_paciente"];
 
 	$sql_statuspaciente = "INSERT INTO StatusPaciente ( 
-	id_statuspaciente, 
 	statusPaciente)
 	VALUES (
-	'{$codigo}',
 	'{$status}')";
 
 	$res_statuspaciente = $conn -> query($sql_statuspaciente) or die($conn->error);

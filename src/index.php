@@ -61,7 +61,7 @@
                 <button class="w-100 btn btn-lg btn-primary" type="submit" value="Entrar">Entrar</button>
 
                 <a href="paciente-cadastrar.php">Preciso Registrar como Paciente</a></br>
-                <a href="colaborador-cadastrar.php">Preciso Registrar como Colaborador</a></br>
+                </br>
                 <a href="redefinirsenha.php">Esqueci a Senha</a>
                 <p class="mt-5 mb-3 text-muted">&copy; Desenvolvido por Keilly Francielly, Matheus Corrêa e Thairo Fortes :: Todos os Direitos Reservados.</p>
             </form>

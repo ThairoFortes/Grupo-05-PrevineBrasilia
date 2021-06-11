@@ -39,92 +39,90 @@
     <div class="container">
       <main>
        <div>
-        <form method="POST" action="">
-          <div class="row g-3">
 
-            <div class="form-label col-sm-4">
-              <label for="floatingInput">CPF</label>
-              <input type="number" class="form-control" name="cpf" id="cpf" id="floatingInput" placeholder="000.000.000-00" value="">
-              <div class="invalid-feedback">Digite um CPF válido</div>
-            </div>
+        <div class="row g-3">
 
-            <div class="form-label col-sm-4">
-              <label for="floatingInput">Nome</label>
-              <input type="text" class="form-control" name="nome" id="nome" id="floatingInput" placeholder="Digito o nome do paciente" value="">
-              <div class="invalid-feedback">Digite um nome válido</div>
-            </div>
-
-            <div class="form-label col-sm-4">
-              <label for="floatingInput">Status</label>
-              <input type="text" class="form-control" name="status" id="status" id="floatingInput" placeholder="Ex: Pendente" value="">
-              <div class="invalid-feedback">Digite um status válido</div>
-            </div>
-
-            <div class="col-12">
-              <input type="submit" class="btn btn-primary"  value="Buscar"/>
-            </div>
-
-            <?php
-            include("config.php");
-
-              $sql_usuarios = "SELECT u.*,p.*,s.*
-              FROM usuarios u JOIN paciente p
-              ON u.id_usuarios = p.usuarios_id_usuarios
-              JOIN StatusPaciente s 
-              ON p.StatusPaciente_id_statuspaciente = s.id_statuspaciente";
-
-              $res_usuarios = $conn -> query($sql_usuarios) or die($conn->error);
-
-              $qtd = $res_usuarios->num_rows;
-
-              if($qtd > 0){
-                print "<p>Resultados encontrados: <b>$qtd</b></p>";
-
-                print "<table class='table table-bordered table-striped table-hover'>";
-                print "<tr>";
-                print "<th>Id</th>";
-                print "<th>Cartão SUS</th>";
-                print "<th>Nome</th>";
-                print "<th>Data de Nascimento</th>";
-                print "<th>Bairro</th>";
-                print "<th>Status</th>";
-                print "<th>Registro</th>";
-                print "<th>Ações</th>";
-                print "</tr>";
-                while($row = $res_usuarios->fetch_object()){
-                  print "<tr>";
-                  print "<td>".$row->id_usuarios."</td>";
-                  print "<td>".$row->CartaoSUS."</td>";
-                  print "<td>".$row->nome."</td>";
-                  print "<td>".$row->DataNascimento."</td>";
-                  print "<td>".$row->bairro."</td>";
-                  print "<td>".$row->statusPaciente."</td>";
-                  print "<td>".$row->registro."</td>";
-                  print "<td>
-                  <button onclick=\"location.href='?page=edit-paciente&id_usuarios=".$row->id_usuarios."';\" class='btn btn-primary'>Editar</button>                
-                  </td>";
-                  print "</tr>";
-                }
-                print "</table>";
-              }else{
-                print "<p>Não encontrou resultados</p>";
-              }
-
-              switch(@$_REQUEST["page"]){
-              //paciente
-              case "edit-paciente":
-                include("paciente-editar.php");
-              break;
-            }
-            ?>
-
-            <a href="index.php">Voltar para Login</a>
-            <a href="menu.php">Voltar para Menu</a> 
-
+          <div class="form-label col-sm-4">
+            <label for="floatingInput">CPF</label>
+            <input type="number" class="form-control" name="cpf" id="cpf" id="floatingInput" placeholder="000.000.000-00" value="">
+            <div class="invalid-feedback">Digite um CPF válido</div>
           </div>
 
+          <div class="form-label col-sm-4">
+            <label for="floatingInput">Nome</label>
+            <input type="text" class="form-control" name="nome" id="nome" id="floatingInput" placeholder="Digito o nome do paciente" value="">
+            <div class="invalid-feedback">Digite um nome válido</div>
+          </div>
 
-        </form>
+          <div class="form-label col-sm-4">
+            <label for="floatingInput">Status</label>
+            <input type="text" class="form-control" name="status" id="status" id="floatingInput" placeholder="Ex: Pendente" value="">
+            <div class="invalid-feedback">Digite um status válido</div>
+          </div>
+
+          <div class="col-12">
+            <input type="submit" class="btn btn-primary"  value="Buscar"/>
+          </div>
+
+          <?php
+          include("config.php");
+
+          /*$sql = "SELECT * FROM usuarios WHERE cpf='$_REQUEST['cpf']' or nome='$_REQUEST['nome']' or status='$_REQUEST['status']'";*/
+
+          $sql_usuarios = "SELECT u.*,p.*,s.*
+          FROM usuarios u JOIN paciente p
+          ON u.id_usuarios = p.usuarios_id_usuarios
+          JOIN StatusPaciente s 
+          ON p.StatusPaciente_id_statuspaciente = s.id_statuspaciente";
+
+          $res_usuarios = $conn -> query($sql_usuarios) or die($conn->error);
+
+          $qtd = $res_usuarios->num_rows;
+
+          if($qtd > 0){
+            print "<p>Resultados encontrados: <b>$qtd</b></p>";
+
+            print "<table class='table table-bordered table-striped table-hover'>";
+            print "<tr>";
+            print "<th>Id</th>";
+            print "<th>Cartão SUS</th>";
+            print "<th>Nome</th>";
+            print "<th>Data de Nascimento</th>";
+            print "<th>Bairro</th>";
+            print "<th>Status</th>";
+            print "<th>Registro</th>";
+            print "<th>Ações</th>";
+            print "</tr>";
+            while($row = $res_usuarios->fetch_object()){
+              print "<tr>";
+              print "<td>".$row->id_usuarios."</td>";
+              print "<td>".$row->CartaoSUS."</td>";
+              print "<td>".$row->nome."</td>";
+              print "<td>".$row->DataNascimento."</td>";
+              print "<td>".$row->bairro."</td>";
+              print "<td>".$row->statusPaciente."</td>";
+              print "<td>".$row->registro."</td>";
+              print "<td>
+              <button onclick=\"location.href='paciente-editar.php?id_usuarios=".$row->id_usuarios."';\" class='btn btn-primary'>Editar</button>                
+              </td>";
+              print "</tr>";
+            }
+            print "</table>";
+          }else{
+            print "<p>Não encontrou resultados</p>";
+          }
+
+          switch(@$_REQUEST["page"]){
+              //paciente
+            case "edit-paciente":
+            include("paciente-editar.php");
+            break;
+          }
+          ?>
+
+          <a href="menu.php">Voltar para Menu</a> 
+
+        </div>
 
       </main>
     </div>

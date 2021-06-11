@@ -41,11 +41,7 @@ session_start();
         <img class="mb-4" src="imagens/1.jpeg" alt="" width="300" height="150">
         <h1 class="h3 mb-3 fw-normal">Status do Colaborador</h1>
 
-        <div class="form-floating mb-1">
-          <input type="number" name="codigostatus_colaborador" class= "form-control" id="floatingInput" placeholder="">
-          <label for="floatingInput">Código</label>
-        </div>
-
+       
         <div class="form-floating mb-1">
           <input type="text" name="status_colaborador" class="form-control" id="floatingPassword" placeholder="">
           <label for="floatingPassword">Status</label>

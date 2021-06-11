@@ -222,8 +222,8 @@
                   <label class="form-label">Dependentes*</label>
                   <select class="form-select" name="dependentes_paciente" aria-label="Default select example" required>
                     <option selected>Selecione</option>
-                    <option value="s">Sim</option>
-                    <option value="n">Não</option>
+                    <option value="Sim">Sim</option>
+                    <option value="Nao">Não</option>
                   </select>
                   <div class="invalid-feedback">Selecione uma opção válida</div>
                 </div>
@@ -266,7 +266,7 @@
                 </div>
 
                 <div class="col-12">
-                  <input type="submit" class="btn btn-primary"  value="Salvar"/>
+                  <input type="submit" class="btn btn-primary" value="Salvar">
                 </div>
               </form>
               
@@ -281,8 +281,7 @@
       </div>
 
       <?php
-      include("config.php");
-
+      include ("config.php");
       switch(@$_REQUEST["page"]){
               //paciente
         case "cad-paciente":

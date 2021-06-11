@@ -42,11 +42,6 @@ session_start();
         <h1 class="h3 mb-3 fw-normal">Status do Paciente</h1>
 
         <div class="form-floating mb-1">
-          <input type="number" name="codigostatus_paciente" class= "form-control" id="floatingInput" placeholder="">
-          <label for="floatingInput">Código</label>
-        </div>
-
-        <div class="form-floating mb-1">
           <input type="text" name="status_paciente" class="form-control" id="floatingPassword" placeholder="">
           <label for="floatingPassword">Status</label>
         </div>

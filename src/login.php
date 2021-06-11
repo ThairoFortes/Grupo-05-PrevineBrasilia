@@ -15,7 +15,12 @@ if((isset($_POST['cpf'])) && (isset($_POST['senha']))){
             $_SESSION['loginErro'] = "<h1 style='color: red;'>CPF ou Senha Inválido!</h1>";
             header("Location: index.php");
         }elseif (isset($resultado)){
-            header("Location: menu.php");
+            if($resultado["tipo"]=="1"){
+                header("Location: paciente-listar.php");
+            }
+            else{
+                header("Location: menu.php");
+            }
         }else{
             $_SESSION['loginErro'] = "<h1 style='color: red;'>CPF ou Senha Inválido!</h1>";
             header("Location: index.php");

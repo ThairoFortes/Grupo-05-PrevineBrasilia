@@ -83,52 +83,59 @@ switch ($_REQUEST["acao"]) {
 
 
 	case 'editar':
-	/*$id_usuarios    = $_POST["id_usuarios"];*/
-	$cpf 			= $_POST["cpf_paciente"];
-	$cartao 		= $_POST["cartao_paciente"];
-	$nome     		= $_POST["nome_paciente"];
-	$email     		= $_POST["email_paciente"];
-	$dtnascimento   = $_POST["dtnascimento_paciente"];
-	$telefone     	= $_POST["telefone_paciente"];
-	$celular     	= $_POST["celular_paciente"];
-	$genero     	= $_POST["genero_paciente"];
-	$cor     		= $_POST["cor_paciente"];
-	$cep     		= $_POST["cep_paciente"];
-	$cidade     	= $_POST["cidade_paciente"];
-	$bairro      	= $_POST["bairro_paciente"];
-	$uf             = $_POST["uf_paciente"];
-	$endereco       = $_POST["endereco_paciente"];
-	$complemento    = $_POST["complemento_paciente"];
-	$dependentes    = $_POST["dependentes_paciente"];
-	$qtddependentes = $_POST["qtddependentes_paciente"];
-	$agendamento    = $_POST["agendamento_paciente"];
-	$periodo        = $_POST["periodo_paciente"];
-	$senha          = $_POST["senha_paciente"];
+	$nome     		= $_POST["nome"];
+	$email     		= $_POST["email"];
+	$DataNascimento = $_POST["DataNascimento"];
+	$telefone     	= $_POST["telefone"];
+	$celular     	= $_POST["celular"];
+	$cep     		= $_POST["cep"];
+	$cidade     	= $_POST["cidade"];
+	$bairro      	= $_POST["bairro"];
+	$estado         = $_POST["estado"];
+	$logradouro     = $_POST["logradouro"];
+	$complemento    = $_POST["complemento"];
+	$funcao   		= $_POST["funcao"];
+	$cargo    		= $_POST["cargo"];
+	$areaatuacao    = $_POST["areaatuacao"];
+	$StatusColaborador_id_statuscolaborador    = $_POST["StatusColaborador_id_statuscolaborador"];
 
-	$result_usuarios = "UPDATE usuarios SET 
-	nome='{$nome}'
+	$sql_usuarios = "UPDATE usuarios SET 
+	nome='{$nome}',
+	email='{$email}',
+	DataNascimento='{$DataNascimento}',
+	telefone='{$telefone}',
+	celular='{$celular}',
+	cep='{$cep}',
+	cidade='{$cidade}',
+	bairro='{$bairro}',
+	estado='{$estado}',
+	logradouro='{$logradouro}',
+	complemento='{$complemento}'	
 	WHERE
 	id_usuarios = ".$_POST["id_usuarios"];
-	
-	$res = $conn -> query($result_usuarios);
 
-	if($res==true){
+	$res_usuarios = $conn -> query($sql_usuarios) or die($conn->error);
+
+	$sql_colaborador = "UPDATE colaborador SET 
+	funcao='{$funcao}',
+	cargo='{$cargo}',
+	StatusColaborador_id_statuscolaborador='{$StatusColaborador_id_statuscolaborador}',
+	areaatuacao='{$areaatuacao}'
+	WHERE
+	usuarios_id_usuarios = ".$_POST["id_usuarios"];
+
+	$res_colaborador = $conn -> query($sql_colaborador) or die($conn->error);
+
+	/*var_dump($sql_usuarios);
+	var_dump($sql_colaborador);
+	die();*/
+
+	if($res_usuarios==true AND $res_colaborador==true){
 		print "<div class='alert alert-success mt-5'><p>Editou com sucesso!</p></div>";
 	}else{
 		print "<div class='alert alert-danger mt-5'><p>Não foi possível editar!</p></div>";
 	}
 	break;
-
-	case 'excluir':
-	$sql = "DELETE FROM biblioteca
-	WHERE id_biblioteca = ".$_REQUEST["id_biblioteca"];
-	$res = $conn->query($sql) or die($conn->error);
-
-	if($res==true){
-		print "<div class='alert alert-success mt-5'><p>Excluiu com sucesso!</p></div>";
-	}else{
-		print "<div class='alert alert-danger mt-5'><p>Não foi possível excluir!</p></div>";
-	}
-	break;
+	
 }
 ?>
