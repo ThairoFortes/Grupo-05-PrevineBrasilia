@@ -62,7 +62,7 @@
 
                 <a href="paciente-cadastrar.php">Preciso Registrar como Paciente</a></br>
                 </br>
-                <a href="redefinirsenha.php">Esqueci a Senha</a>
+                
                 <p class="mt-5 mb-3 text-muted">&copy; Desenvolvido por Keilly Francielly, Matheus Corrêa e Thairo Fortes :: Todos os Direitos Reservados.</p>
             </form>
 

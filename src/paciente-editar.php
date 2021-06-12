@@ -296,7 +296,7 @@
               </form>
               
               <div class="my-4">
-                <a href="menu.php">Voltar para Menu</a>
+                <a href="paciente-relatorio.php">Voltar para Relatório Paciente</a>
               </div>
 
             </div>

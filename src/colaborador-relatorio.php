@@ -46,28 +46,6 @@ session_start();
 
         <div class="row g-3">
 
-          <div class="form-label col-sm-4">
-            <label for="floatingInput">Matrícula</label>
-            <input type="number" class="form-control" name="matricula" id="matricula" id="floatingInput" placeholder="000 0000" value="">
-            <div class="invalid-feedback">Digite um Matricula válido</div>
-          </div>
-
-          <div class="form-label col-sm-4">
-            <label for="floatingInput">Nome</label>
-            <input type="text" class="form-control" name="nome" id="nome" id="floatingInput" placeholder="Digito o nome do colaborador" value="">
-            <div class="invalid-feedback">Digite um nome válido</div>
-          </div>
-
-          <div class="form-label col-sm-4">
-            <label for="floatingInput">Status</label>
-            <input type="text" class="form-control" name="status" id="status" id="floatingInput" placeholder="Ex: Ativo" value="">
-            <div class="invalid-feedback">Digite um status válido</div>
-          </div>
-
-          <div class="col-12">
-            <input type="submit" class="btn btn-primary"  value="Buscar"/>
-          </div>
-
           <?php
           include("config.php");
 

@@ -248,7 +248,7 @@
               </form>
               
               <div class="my-4">
-                <a href="menu.php">Voltar para Menu</a>
+                <a href="colaborador-relatorio.php">Voltar para Relatório Colaborador</a>
               </div>
 
             </div>

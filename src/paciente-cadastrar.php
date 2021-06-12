@@ -260,7 +260,7 @@
                   <div class="invalid-feedback">Selecione uma opção válida</div>
                 </div>
 
-                <div class="col-12">
+                <div class="col-6">
                   <label class="form-label">Senha*</label>
                   <input type="password" class="form-control" name="senha_paciente" placeholder="">
                 </div>

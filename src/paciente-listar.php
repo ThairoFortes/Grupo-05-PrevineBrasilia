@@ -42,68 +42,53 @@
       <main>
        <div class="col-md-7 col-lg-8">
 
-        <?php
-        include("config.php");
-
-        $sql_usuarios = "SELECT u.*,p.*,s.*
-        FROM usuarios u JOIN paciente p
-        ON u.id_usuarios = p.usuarios_id_usuarios
-        JOIN StatusPaciente s 
-        ON p.StatusPaciente_id_statuspaciente = s.id_statuspaciente
-        WHERE id_usuarios = ".$_REQUEST["id_usuarios"];
-
-        $res_usuarios = $conn -> query($sql_usuarios) or die($conn->error);
-
-        $row = $res_usuarios->fetch_object();
-
-        ?>
 
         <form class="needs-validation" novalidate method="post" action="paciente-salvar.php">
           <input type="hidden" name="acao" value="editar">
-          <input type="hidden" name="id_usuarios" value="<?php echo $row->id_usuarios; ?>">
+          <input type="hidden" name="id_usuarios">
           <div class="row g-3">
 
             <div class="col-sm-6">
               <label class="form-label">CPF*</label>
-              <input type="text" class="form-control" value="<?php echo $row->cpf; ?>" disabled>
+              <input type="text" class="form-control" disabled>
             </div>
 
             <div class="col-sm-6">
               <label class="form-label">Cartão SUS*</label>
-              <input type="number"  class="form-control" value="<?php echo $row->CartaoSUS; ?>" disabled>
+              <input type="number"  class="form-control" disabled>
             </div>
 
             <div class="col-12">
               <label class="form-label">Nome Completo*</label>
               <div class="input-group has-validation">
-                <input type="text" class="form-control" name="nome_paciente" value="<?php echo $row->nome; ?>" disabled>
+                <input type="text" class="form-control" name="nome_paciente" disabled>
               </div>
             </div>
 
             <div class="col-sm-6">
               <label class="form-label">E-mail*</label>
-              <input type="email" class="form-control" name="email_paciente" value="<?php echo $row->email; ?>" required>
+              <input type="email" class="form-control" name="email_paciente" required>
             </div>
 
             <div class="col-sm-6">
               <label class="form-label">Data de Nascimento*</label>
-              <input type="date" class="form-control" name="dtnascimento_paciente" value="<?php echo $row->DataNascimento; ?>">
+              <input type="date" class="form-control" name="dtnascimento_paciente" >
             </div>
 
             <div class="col-sm-6">
               <label class="form-label">Telefone (Opcional)</label>
-              <input type="number" class="form-control" name="telefone_paciente" value="<?php echo $row->telefone; ?>">
+              <input type="number" class="form-control" name="telefone_paciente">
             </div>
 
             <div class="col-sm-6">
               <label class="form-label">Celular*</label>
-              <input type="number" class="form-control" name="celular_paciente" value="<?php echo $row->celular; ?>">
+              <input type="number" class="form-control" name="celular_paciente">
             </div>
 
             <div class="col-sm-6">
               <label class="form-label">Gênero*</label>
               <select class="form-select" name="genero_paciente" aria-label="Default select example">
-                <option selected><?php echo $row->genero;?></option>
+                <option selected>Selecione</option>
                 <option value="Masculino">Masculino</option>
                 <option value="Feminino">Feminino</option>
               </select>
@@ -112,7 +97,7 @@
             <div class="col-sm-6">
               <label class="form-label">Cor*</label>
               <select class="form-select" name="cor_paciente" aria-label="Default select example">
-                <option selected><?php echo $row->cor;?></option>
+                <option selected>Selecione</option>
                 <option value="Amarelo">Amarelo</option>
                 <option value="Branco">Branco</option>
                 <option value="Indigena">Indígena</option>
@@ -123,38 +108,38 @@
 
             <div class="col-sm-3">
               <label class="form-label">CEP*</label>
-              <input type="text"class="form-control" name="cep_paciente" size="10" maxlength="9" id="cep_paciente" value="<?php echo $row->cep; ?>">
+              <input type="text"class="form-control" name="cep_paciente" size="10" maxlength="9" id="cep_paciente">
             </div>
 
             <div class="col-sm-3">
               <label class="form-label">Cidade*</label>
-              <input type="text" class="form-control" name="cidade_paciente" size="60" id="cidade_paciente" value="<?php echo $row->cidade; ?>">
+              <input type="text" class="form-control" name="cidade_paciente" size="60" id="cidade_paciente" >
             </div>
 
             <div class="col-sm-3">
               <label class="form-label">Bairro*</label>
-              <input type="text" class="form-control" name="bairro_paciente" size="40" id="bairro_paciente" value="<?php echo $row->bairro; ?>">
+              <input type="text" class="form-control" name="bairro_paciente" size="40" id="bairro_paciente" >
             </div>
 
             <div class="col-sm-3">
               <label class="form-label">Estado*</label>
-              <input type="text" class="form-control" name="uf_paciente" size="2" id="uf_paciente" value="<?php echo $row->estado; ?>">
+              <input type="text" class="form-control" name="uf_paciente" size="2" id="uf_paciente" >
             </div>
 
             <div class="col-12">
               <label class="form-label">Endereço*</label>
-              <input type="text" class="form-control" name="endereco_paciente" size="40" id="endereco_paciente" value="<?php echo $row->logradouro; ?>">
+              <input type="text" class="form-control" name="endereco_paciente" size="40" id="endereco_paciente" >
             </div>
 
             <div class="col-12">
               <label class="form-label">Complemento (Opcional)</label>
-              <input type="text" class="form-control" name="complemento_paciente" size="40" value="<?php echo $row->complemento; ?>">
+              <input type="text" class="form-control" name="complemento_paciente" size="40" >
             </div>
 
             <div class="col-sm-3">
               <label class="form-label">Dependentes*</label>
               <select class="form-select" name="dependentes_paciente" aria-label="Default select example">
-                <option selected><?php echo $row->dependentes;?></option>
+                <option selected>Selecione</option>
                 <option value="Sim">Sim</option>
                 <option value="Nao">Não</option>
               </select>
@@ -162,13 +147,13 @@
 
             <div class="col-sm-2">
               <label class="form-label">Quantidade</label>
-              <input type="text" class="form-control" name="qtddependentes_paciente" value="<?php echo $row->QuantDep; ?>">
+              <input type="text" class="form-control" name="qtddependentes_paciente" >
             </div>
 
             <div class="col-sm-4">
               <label class="form-label">Agendamento*</label>
               <select class="form-select" name="agendamento_paciente" aria-label="Default select example">
-                <option selected><?php echo $row->DiaSemana;?></option>
+                <option selected>Selecione</option>
                 <option value="Segunda">Segunda-Feira</option>
                 <option value="Terça">Terça-Feira</option>
                 <option value="Quarta">Quarta-Feira</option>
@@ -182,16 +167,14 @@
             <div class="col-sm-3">
               <label class="form-label">Período*</label>
               <select class="form-select" name="periodo_paciente" aria-label="Default select example">
-                <option selected><?php echo $row->periodo;?></option>
+                <option selected>Selecione</option>
                 <option value="Manha">Manhã</option>
                 <option value="Tarde">Tarde</option>
                 <option value="Noite">Noite</option>
               </select>
             </div>
 
-            <div class="col-12">
-              <input type="submit" class="btn btn-primary"  value="Editar"/>
-            </div>
+            
           </form>
 
           <div class="my-4">
@@ -203,24 +186,6 @@
     </div>
 
   </div>
-
-  <?php
-  switch(@$_REQUEST["page"]){
-      //paciente
-    case "cad-paciente":
-    include("paciente-cadastrar.php");
-    break;
-    case "list-paciente":
-    include("paciente-listar.php");
-    break;
-    case "edit-paciente":
-    include("paciente-editar.php");
-    break;
-    case "save-paciente":
-    include("paciente-salvar.php");
-    break;
-  }
-  ?>
 
   <footer>
     <p class="mt-5 mb-3 text-muted">&copy; Desenvolvido por Keilly Francielly, Matheus Corrêa e Thairo Fortes :: Todos os Direitos Reservados.</p>
